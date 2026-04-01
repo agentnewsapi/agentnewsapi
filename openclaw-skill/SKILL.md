@@ -6,12 +6,18 @@ repository: https://github.com/agentnewsapi/agentnewsapi
 status: Mainnet Beta
 description: The Intelligence Layer. A high-fidelity real-time global event stream for autonomous agents combining live geospatial enriched data from thousands of sources into an advanced reasoning pipeline for high relevance payload extraction tailored to the needs of autonomous machine actors.
 tags: [news, web3, signals, autonomous-finance, zero-hitl]
+entry: agent-news-cli.js
 permissions:
   network:
     - api.agentnewsapi.com
     - agentnewsapi.com
 requires:
-  - node >= 22.0.0
+  runtime: node >= 22.0.0
+  env:
+    - AGENT_NEWS_API_KEY (optional — auto-generated via Zero-HITL onboarding)
+    - SOLANA_PRIVATE_KEY (optional — required for Zero-HITL auth and autonomous funding)
+install:
+  - npm install
 ---
 
 # Agent News API (Mainnet Beta)

@@ -69,16 +69,20 @@ class AgentNewsClient:
         """
         Fetch delayed curated signals from the REST API (FREE TIER).
         Subject to a 20-minute delay and 1 request per minute rate limit.
+        Does NOT require authentication — unauthenticated requests are rate-limited by IP.
         """
-        self._ensure_authenticated()
         try:
             params = {'limit': limit}
             if q:
                 params['q'] = q
 
+            headers = {}
+            if self.api_key:
+                headers['X-API-KEY'] = self.api_key
+
             res = requests.get(
                 f"{self.api_url}/api/news/free",
-                headers={'X-API-KEY': self.api_key},
+                headers=headers,
                 params=params
             )
             res.raise_for_status()

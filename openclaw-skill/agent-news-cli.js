@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const path = require('path');
-const { AgentNewsClient } = require('../sdk/node/index.js');
+const { AgentNewsClient } = require('./lib/agent-news-client');
 
 // Load environment variables if dotenv is available
 try {
